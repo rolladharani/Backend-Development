@@ -1,23 +1,16 @@
 import express from 'express';
-const app =express();
+const app=express();
+app.use(express.json()); 
+import cors from 'cors'
+app.use(cors())
+import stuRoutes from "./Routes/stuRoutes.js"
 
-//middleware
-app.use(express.json());
+app.use('/',stuRoutes);
 
+// app.get('/get-stu',(req,res)=>{
+//     res.send("Yayy!!");
+// })
 
-app.get('/',(req,res)=>{
-    res.send("Api Success");
-    // console.log(data);
-})
-
-app.post('/add-user',(req,res)=>{
-    let data=req.body;
-    console.log(data);
-    //logic to add data into your data base
-    res.send("data added");
-});
-
-app.listen(8001,()=>{
-    console.log("Server  running at port 7000");
-    // console.log(data);
+app.listen(3000,()=>{
+    console.log("Server Started succesfully at port 3000");
 })
