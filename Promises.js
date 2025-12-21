@@ -15,7 +15,7 @@ function s2(roll)
         resolve("In this we will get roll number",roll);
 
     })
-   
+    
 };
 function s3(subid)
 {
