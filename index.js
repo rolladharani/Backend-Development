@@ -1,16 +1,22 @@
+
 import express from 'express';
-const app=express();
-app.use(express.json()); 
-import cors from 'cors'
-app.use(cors())
-import stuRoutes from "./Routes/stuRoutes.js"
+import cors from 'cors';
+import mongoose from 'mongoose';
+import studentRouter from './Routes/stuRoutes.js';
 
-app.use('/',stuRoutes);
+const app = express();
+app.use(express.json());
+app.use(cors());
 
-// app.get('/get-stu',(req,res)=>{
-//     res.send("Yayy!!");
-// })
+mongoose.connect("mongodb+srv://rolladharani77_db_user:Dharani2504@cluster0.xjaosgi.mongodb.net/").then(() => console.log("db connected"))
+.catch((error) => console.log(error));
 
-app.listen(3000,()=>{
-    console.log("Server Started succesfully at port 3000");
+app.use('/', studentRouter);
+app.get('/users', (req, res) => {
+    console.log("hello this is");
+    res.send("hello this is from backend");
 })
+
+app.listen(2885, () => {
+    console.log("server running at port 2885")
+});
