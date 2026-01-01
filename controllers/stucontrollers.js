@@ -71,4 +71,5 @@ const updateStudentsStatus = async (req, res) => {
         res.status(500).json({error: error.message});
     }
 }
+
 export {getStudentsDetails, addStudents, getStudentById, getStudentsDetailsWithFilters, updateStudents, updateStudentsStatus};
